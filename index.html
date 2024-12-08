@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Responsive Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" />
+  </head>
+  <body class="font-mono bg-gray-100" id="bg">
+    <div class="container mx-auto px-4 md:px-8 py-6 flex flex-col md:flex-row justify-center gap-6">
+      <!-- Color Changer Section -->
+      <div class="bg-emerald-500 h-40 w-full md:w-2/5 rounded-lg flex flex-col justify-center items-center">
+        <h3 class="text-2xl font-bold mb-4 uppercase text-white">Color Changer</h3>
+        <input type="color" class="border-2 border-white" id="change" />
+      </div>
+
+      <!-- Quote Generator Section -->
+      <div class="bg-gray-500 h-2/4 w-full md:w-2/5 rounded-lg flex flex-col justify-center items-center p-4">
+        <h1 class="text-2xl font-bold uppercase text-center mb-4 text-white">Random Quote Generator</h1>
+        <input type="color" id="changeborder" class="mb-2" />
+        <input type="color" id="changetext" class="mb-2" />
+        <div class="rounded-lg shadow-lg w-full h-2/4 mt-2 flex flex-col justify-center items-center color-text" id="bgborder">
+          <p class="text-xl font-sans pl-2 text-center" id="quote">Click the button below to generate a random quote</p>
+          <p class="text-xl italic mt-3 font-bold" id="authorr">- author</p>
+        </div>
+        <button class="btn btn-active btn-primary mt-3 w-full sm:w-auto mb-3" id="btn">New Quote</button>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-8 py-6 flex flex-col md:flex-row justify-center gap-6">
+      <!-- Calculator Section -->
+      <div class="bg-white p-8 rounded-lg shadow-lg w-full md:w-80 flex flex-col justify-center items-center">
+        <h1 class="text-2xl font-bold text-center mb-4">Kalkulator</h1>
+        <input id="display" type="text" class="w-full p-2 border border-gray-300 rounded-md text-right mb-4" readonly placeholder="0" />
+
+        <div class="grid grid-cols-4 gap-2 w-full">
+          <button class="p-4 bg-blue-500 text-white rounded-md hover:bg-blue-600" onclick="appendToDisplay('7')">7</button>
+          <button class="p-4 bg-blue-500 text-white rounded-md hover:bg-blue-600" onclick="appendToDisplay('8')">8</button>
+          <button class="p-4 bg-blue-500 text-white rounded-md hover:bg-blue-600" onclick="appendToDisplay('9')">9</button>
+          <button class="p-4 bg-red-500 text-white rounded-md hover:bg-red-600" onclick="appendToDisplay('/')">/</button>
+
+          <button class="p-4 bg-blue-500 text-white rounded-md hover:bg-blue-600" onclick="appendToDisplay('4')">4</button>
+          <button class="p-4 bg-blue-500 text-white rounded-md hover:bg-blue-600" onclick="appendToDisplay('5')">5</button>
+          <button class="p-4 bg-blue-500 text-white rounded-md hover:bg-blue-600" onclick="appendToDisplay('6')">6</button>
+          <button class="p-4 bg-red-500 text-white rounded-md hover:bg-red-600" onclick="appendToDisplay('*')">*</button>
+
+          <button class="p-4 bg-blue-500 text-white rounded-md hover:bg-blue-600" onclick="appendToDisplay('1')">1</button>
+          <button class="p-4 bg-blue-500 text-white rounded-md hover:bg-blue-600" onclick="appendToDisplay('2')">2</button>
+          <button class="p-4 bg-blue-500 text-white rounded-md hover:bg-blue-600" onclick="appendToDisplay('3')">3</button>
+          <button class="p-4 bg-red-500 text-white rounded-md hover:bg-red-600" onclick="appendToDisplay('-')">-</button>
+
+          <button class="p-4 bg-blue-500 text-white rounded-md hover:bg-blue-600" onclick="appendToDisplay('0')">0</button>
+          <button class="p-4 bg-gray-300 text-black rounded-md hover:bg-gray-400" onclick="clearDisplay()">C</button>
+          <button class="p-4 bg-gray-300 text-black rounded-md hover:bg-gray-400" onclick="del()">Del</button>
+          <button class="p-4 bg-green-500 text-white rounded-md hover:bg-green-600 col-span-2" onclick="calculate()">=</button>
+          <button class="p-4 bg-red-500 text-white rounded-md hover:bg-red-600" onclick="appendToDisplay('+')">+</button>
+        </div>
+      </div>
+
+      <!-- Countdown Timer Section -->
+      <div class="h-2/5 w-full md:w-2/5 flex flex-col justify-center items-center bg-blue-500 text-white rounded-lg p-6">
+        <h1 class="text-2xl uppercase mb-4">Countdown Timer</h1>
+        <div id="countdown" class="text-center mb-4"><span id="days">00</span> days <span id="hours">00</span> hours <span id="minutes">00</span> minutes <span id="seconds">00</span> seconds</div>
+        <div class="flex justify-center mb-4">
+          <input class="bg-gray-200 text-center rounded-lg m-2 text-black w-full sm:w-1/4 h-8" type="number" id="inputhours" min="0" placeholder="hours" />
+          <input class="bg-gray-200 text-center rounded-lg m-2 text-black w-full sm:w-1/4 h-8" type="number" id="inputminutes" min="0" max="59" placeholder="minutes" />
+          <input class="bg-gray-200 text-center rounded-lg m-2 text-black w-full sm:w-1/4 h-8" type="number" id="inputseconds" min="0" max="59" placeholder="seconds" />
+        </div>
+        <button class="btn btn-accent mt-3 w-full sm:w-auto" id="startbutton">Start</button>
+      </div>
+    </div>
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- Modal -->
+    <input type="checkbox" id="my-modal-4" class="modal-toggle" />
+    <div class="modal">
+      <div class="modal-box">
+        <h2 class="text-lg font-bold">time is up</h2>
+        <p id="waktu"></p>
+        <div class="modal-action">
+          <label for="my-modal-4" class="btn">close</label>
+        </div>
+      </div>
+    </div>
+    <input type="checkbox" id="my-modal-5" class="modal-toggle" />
+    <div class="modal bg-transparent">
+      <div class="modal-box text-center">
+        <h2 class="text-lg font-bold uppercase">please input a valid time</h2>
+        <p id="waktu1"></p>
+        <div class="modal-action">
+          <label for="my-modal-5" class="btn">close</label>
+        </div>
+      </div>
+    </div>
+    <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+    <div class="modal bg-transparent">
+      <div class="modal-box text-center">
+        <h2 class="text-lg font-bold uppercase">error</h2>
+        <p id="waktu1"></p>
+        <div class="modal-action">
+          <label for="my-modal-6" class="btn">close</label>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
